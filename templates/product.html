@@ -30,9 +30,6 @@
             </div>
 
             <p class="lead">
-              <span class="mr-1">
-                <del>$200</del>
-              </span>
               <span>
                   {% if object.discount_price %}
                     R$ {{ object.discount_price }}
@@ -44,9 +41,7 @@
 
             <p class="lead font-weight-bold">Description</p>
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolor suscipit libero eos atque quia ipsa
-              sint voluptatibus!
-              Beatae sit assumenda asperiores iure at maxime atque repellendus maiores quia sapiente.</p>
+            <p>{{ object.description }}</p>
 
             <form class="d-flex justify-content-left">
               <!-- Default input -->
