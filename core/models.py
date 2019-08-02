@@ -9,7 +9,6 @@ CATEGORY_CHOICES = (
     ("T", "Tênis"),
 )
 
-
 LABEL_CHOICES = (
     ("P", "primary"),
     ("S", "secondary"),
@@ -33,17 +32,23 @@ class Items(models.Model):
             'slug': self.slug
         })
 
+    def get_add_to_cart_url(self):
+        return reverse("core:add-to-cart", kwargs={
+            'slug': self.slug
+        })
+
     class Meta:
         verbose_name = "Item"
         verbose_name_plural = "Item"
 
 
-
 class OrderItem(models.Model):
     item = models.ForeignKey(Items, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
+
 
     def __str__(self):
-        return self.item
+        return f"{self.quantity} of {self.item.title}"
 
     class Meta:
         verbose_name = "Ordem Item"
